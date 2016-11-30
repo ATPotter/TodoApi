@@ -1,0 +1,31 @@
+## SETUP
+Reinstall postgres:
+	sudo apt-get --purge autoremove postgresql*
+	sudo apt-get install postgresql postgresql-client postgresql-doc
+Run psql & change 'postgres' password:
+	sudo -u postgres psql
+	> alter user postgres password 'postgres';
+Using the same psql session, find pg_hba.conf:
+	> show hba_file;
+Login as 'postgres':
+	su - root
+		(enter password, 'calnex')
+	su - postgres
+		(no password should be required)
+Sudo edit pg_hba.conf and change authentication for 'local all all' from 'peer' to 'md5':
+	sudo nano <pg_hba.conf>	
+Reload postgres:
+	/etc/init.d/postgresql reload
+    sudo service postgresql restart
+
+## Build DB
+Login as 'postgres':
+	su - root
+		(enter password, 'calnex')
+	su - postgres
+		(no password should be required)
+Change directory to where RebuildDb.py is
+	cd <path>
+Run the script:
+	python3 RebuildDb.py
+ 

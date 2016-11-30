@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app="ToDoDemo">
+
+<head>
+    <title>Hello</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body ng-controller="ToDoDemoController">
+
+    <div class="container">
+
+        <div class="row">
+
+            <h1>Task list</h1>
+
+            <p><i>Note: RESTful service descriptions available <a href="/swagger/ui" target="_new">here</a></i></p> 
+
+
+            <table class="table table-bordered table-stripe">
+                <thead>
+                    <tr>
+                        <td>Description</td>
+                        <td>Complete?</td>
+                        <td>Key</td>
+                        <td>Time Created</td>
+                    </tr>
+                </thead>
+
+                <tr ng-repeat="task in tasks">
+                    <td>{{task.description}}</td>
+                    <td>{{task.isComplete}}</td>
+                    <td>{{task.key}}</td>
+                    <td>{{task.timeCreated}}</td>
+                </tr>
+            </table>
+
+            <p>&nbsp;</p>
+            <h3>Add An Item</h3>
+            <form novalidate class="simple-form">
+                <label>Task Name: <input type="text" ng-model="newTask.name" /> </label><br />
+                <label>Complete: <input type="checkbox" ng-model="newTask.isComplete" /> </label><br />
+                <input type="submit" ng-click="addTask()" value="Save" />
+            </form>
+
+        </div>
+    </div>
+
+
+    <script src="js/Vendor/jquery-3.1.1.min.js"></script>
+    <script src="js/Vendor/angular.js"></script>
+    <script src="js/Vendor/bootstrap.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+</body>
+
+</html>

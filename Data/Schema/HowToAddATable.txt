@@ -1,0 +1,13 @@
+How To Add A New Table
+~~~~~~~~~~~~~~~~~~~~~~
+
+To add a new table, you have to:
+
+1) Add the table itself to Tables\(table_name).sql
+2) Add constraints to Constraints\(table_name).sql
+3) Add any views to Views\(table_name).sql
+4) Populate the table with data in Data\(table_name).sql
+5) Grant privileges for the table in Privileges\(table_name).sql
+6) Add any database functions in Functions\(table_name).sql
+7) Add any triggers in Triggers\(table_name).sql
+8) Add any superuser functions in SuFunctions\(function_name).sql
