@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TodoApi</name>
+    </assembly>
+    <members>
+        <member name="T:TodoApi.Controllers.appController">
+            <summary>
+            Root of the "app" node of the application
+            </summary>
+        </member>
+        <member name="T:TodoApi.Controllers.app.generation.synce.jitter.appController">
+            <summary>
+            /api/app/generation/synce/jitter/limit...
+            </summary>
+        </member>
+        <member name="M:TodoApi.Controllers.app.generation.synce.jitter.appController.GetLimitCfp2">
+             <summary>Returns the limts values for the CFP2 interface, based on G8262.1</summary>
+             <returns>Information about the CFP2 interface limits</returns>
+             
+             <remarks>
+             This only returns information about the <b>CFP2</b> interface
+             <para>
+             
+             Note that the response is returned as an array of frequency bands, and
+             for each band there is a corresponding limit value.
+            </para>
+            
+             <para>
+             
+             If there is a "denominator" field, it indicates that the actual frequency
+             should be divided by this "denominator" to find the actual limit.
+             </para>
+             <para>
+             
+             The limits are defined in <a href="https://www.itu.int/rec/T-REC-G.8262-201501-I/en">G8262.1</a>
+             </para>
+             
+             </remarks>
+        </member>
+        <member name="M:TodoApi.Controllers.app.generation.synce.jitter.appController.GetLimitCfp4">
+             <summary>Returns the limts values for the CFP4 interface, based on G8262.1</summary>
+             <returns>Information about the CFP4 interface limits</returns>
+             
+             <remarks>
+             This only returns information about the <b>CFP4</b> interface
+             <para>
+             
+             Note that the response is returned as an array of frequency bands, and
+             for each band there is a corresponding limit value.
+            </para>
+            
+             <para>
+             
+             If there is a "denominator" field, it indicates that the actual frequency
+             should be divided by this "denominator" to find the actual limit.
+             </para>
+             <para>
+             
+             The limits are defined in <a href="https://www.itu.int/rec/T-REC-G.8262-201501-I/en">G8262.1</a>
+             </para>
+             
+             </remarks>
+        </member>
+        <member name="M:TodoApi.Controllers.app.generation.synce.jitter.appController.GetLimitCxp">
+             <summary>Returns the limts values for the CXP interface, based on G8262.1</summary>
+             <returns>Information about the CXP interface limits</returns>
+             
+             <remarks>
+             This only returns information about the <b>CXP</b> interface
+             <para>
+             
+             Note that the response is returned as an array of frequency bands, and
+             for each band there is a corresponding limit value.
+            </para>
+            
+             <para>
+             
+             If there is a "denominator" field, it indicates that the actual frequency
+             should be divided by this "denominator" to find the actual limit.
+             </para>
+             <para>
+             
+             The limits are defined in <a href="https://www.itu.int/rec/T-REC-G.8262-201501-I/en">G8262.1</a>
+             </para>
+             
+             </remarks>
+        </member>
+        <member name="M:MyFirstApp.Startup.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Start the Web App
+            </summary>
+            <param name="env"></param>
+        </member>
+        <member name="M:MyFirstApp.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configure services used in the application
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyFirstApp.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Configure the middleware in the application
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+        </member>
+    </members>
+</doc>

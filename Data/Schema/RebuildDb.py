@@ -71,11 +71,12 @@ def executeWithRetry(cmd, msg, maxRetries, delayInSeconds):
 # Execute command for each file on folder
 def executeOn(cmd, folder):
     folder = os.path.join(baselinePath, folder)
-    for file in sorted(os.listdir(folder)):
-        sqlfile = os.path.join(baselinePath, folder, file)
-        if os.name == 'nt':
-            sqlfile = '\"{0}\"'.format(sqlfile)
-        execute(cmd+sqlfile, "Executing '" + sqlfile + "' ...")
+    if os.path.exists(folder):
+        for file in sorted(os.listdir(folder)):
+            sqlfile = os.path.join(baselinePath, folder, file)
+            if os.name == 'nt':
+                sqlfile = '\"{0}\"'.format(sqlfile)
+            execute(cmd+sqlfile, "Executing '" + sqlfile + "' ...")
 
 def main():
     global baselinePath
@@ -115,7 +116,7 @@ def main():
     # This is how we will identify ourselves for any subsequent commands.
     psqlFlags = ' -h {0} -p {1} -q -w -X -1 -v ON_ERROR_STOP=1 '.format(host, port)
     execute('psql {0} -U {1} -d {2} -c "CREATE USER {3} WITH CREATEDB CREATEROLE PASSWORD \'{4}\';"'.format(psqlFlags, superUserName, postgresDbName, adminUserName, adminPassword), 'Creating user {0}...'.format(adminUserName));
-	
+
     # Now, create the database
     os.environ['PGPASSWORD'] = adminPassword
     execute('createdb -U {0} -E UTF-8 {1}'.format(adminUserName, databaseName), 'Creating database {0}...'.format(databaseName))
@@ -133,11 +134,10 @@ def main():
     # -U, our user name
     # -d, our database
     # -f, the file to run  
-	
     suPsqlFlags = '{0}'.format(psqlFlags);
     suPsqlFlags += ' -U {0} -d {1} -f '.format(superUserName, databaseName)
     suCmd = "psql" + suPsqlFlags
-	
+    
     psqlFlags += ' -U {0} -d {1} -f '.format(adminUserName, databaseName)
     cmd = "psql" + psqlFlags
 
@@ -155,7 +155,7 @@ def main():
 
 	# Apply table constraints
     executeOn(cmd, 'Constraints')
-	
+
     # Grant the appropriate privileges for each table
     executeOn(cmd, 'Privileges')
     
@@ -164,11 +164,11 @@ def main():
 
     # Create triggers
     executeOn(cmd, 'Triggers')
-	
+
 	# Create special SU Functions
     os.environ['PGPASSWORD'] = 'postgres'
     executeOn(suCmd, 'SuFunctions')
-	
+
     # Done.
     print("All steps completed successfully.")
     

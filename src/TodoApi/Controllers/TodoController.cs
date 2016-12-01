@@ -8,7 +8,7 @@ using DataObjects;
 namespace TodoApi.Controllers
 {
     [Route("api/[controller]")]
-    public class TodoController : Controller
+    public partial class TodoController : Controller
     {
         #region Declarations
         private ITodoRepository _todoStore;
